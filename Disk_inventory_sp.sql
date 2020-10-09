@@ -1,4 +1,9 @@
+/* Modification log
 
+Date		programmer			description
+10/09/2020	Scott Pinkerton		Build disk_inventory_SP database and add login/user
+
+*/
 
 --create database
 use master;
