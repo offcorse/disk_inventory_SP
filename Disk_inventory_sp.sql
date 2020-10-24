@@ -3,6 +3,7 @@
 Date		programmer			description
 10/09/2020	Scott Pinkerton		Build disk_inventory_SP database and add login/user
 10/16/2020	Scott Pinkerton		Add insert statements for all tables
+10/23/2020	Scott Pinkerton		Added queries for customer. Disk and artist not matching up. 
 */
 
 --create database
@@ -284,7 +285,7 @@ INSERT INTO [dbo].[disk_has_artist]
            ,[artist_id])
      VALUES
            (1,1)
-		   ,(2,2)
+		   ,(2,1)
 		   ,(3,3)
 		   ,(4,4)
 		   ,(5,5)
@@ -310,10 +311,69 @@ select borrower_id, disk_id,borrowed_date,returned_date
 from disk_has_borrower
 where returned_date is null;
 
+--project 4 starts here
+--3.Show the disks in your database and any associated Individual artists only.
+select disk_name as 'Disk Name', release_date as 'Release Date', artist.artist_first_name as 'ArtistFirstName' ,artist.artist_last_name as 'ArtistLastName'
+from artist
+join disk_has_artist
+	on artist.artist_id = disk_has_artist.artist_id
+join disk
+	on disk_has_artist.disk_id = disk.disk_id
+where artist_type_id = 1
+order by artist_last_name;
+go
 
+--4.Create a view called View_Individual_Artist that shows the artists’ names and not group names. Include the artist id in the view definition but do not display the id in your output.
 
+drop view if exists View_Individual_Artist
+go
+create view View_Individual_Artist as
+select artist_first_name as 'FirstName',artist_last_name as 'LastName'
+from artist
+join disk_has_artist
+	on disk_has_artist.artist_id = artist.artist_id
+join disk
+	on disk_has_artist.disk_id = disk.disk_id
+where artist_type_id = 1
+go
 
+select * from View_Individual_Artist
 
+--5.Show the disks in your database and any associated Group artists only. Use the View_Individual_Artist view.
 
+select disk_name as 'Disk Name', release_date as 'Release Date', artist_first_name as 'Group Name'
+from artist
+join disk_has_artist
+	on disk_has_artist.artist_id = artist.artist_id
+join disk
+	on disk_has_artist.disk_id = disk.disk_id
+where artist_type_id = 2
+--could not figure out how to use the view
+go
 
+--6. Show the borrowed disks and who borrowed them.
+select first_name as First,last_name as Last, disk_name as 'Disk Name',borrowed_date as 'Borrowed Date',returned_date as 'Returned Date'
+from disk
+join disk_has_borrower 
+	on disk.disk_id = disk_has_borrower.disk_id
+join borrower
+	on borrower.borrower_id = disk_has_borrower.borrower_id
+order by disk_name
 
+--7. Show the number of times a disk has been borrowed.
+select disk.disk_id as DiskID, disk_name as 'Disk Name', COUNT(*) as TimesBorrowed
+from disk
+join disk_has_borrower
+	on disk.disk_id = disk_has_borrower.disk_id
+group by disk.disk_id, disk_name
+order by disk.disk_id
+
+--8. Show the disks outstanding or on-loan and who has each disk.
+select disk_name as 'Disk Name', borrowed_date as Borrowed, returned_date as Returned,last_name as LastName
+from disk
+join disk_has_borrower
+	on disk.disk_id = disk_has_borrower.disk_id
+join borrower
+	on disk_has_borrower.borrower_id = borrower.borrower_id
+where returned_date is null
+order by last_name
