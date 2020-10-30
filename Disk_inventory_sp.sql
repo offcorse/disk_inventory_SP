@@ -444,7 +444,7 @@ end catch
 
 grant execute on sp_del_disk to diskUsersp;
 
-exec sp_del_disk 22;
+exec sp_del_disk 24;
 
 --insert stored procedure for artist
 drop proc if exists sp_ins_artist;
@@ -511,7 +511,7 @@ end catch
 
 grant execute on sp_del_artist to diskUsersp;
 
-exec sp_del_artist 22;
+exec sp_del_artist 24;
 
 --insert borrower table stored procedure
 drop proc if exists sp_upd_borrower;
@@ -569,4 +569,4 @@ begin catch
 	print 'An error occured: ' + convert(varchar(200),Error_message());
 end catch
 grant execute on sp_del_borrower to diskUsersp;
-exec sp_del_borrower 21
+exec sp_del_borrower 23
