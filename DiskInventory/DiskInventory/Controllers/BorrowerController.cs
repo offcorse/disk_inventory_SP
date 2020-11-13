@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DiskInventory.Models;
 
-namespace DiskInventory.Controllers
+namespace DiskInventory.Controllers     //controller for Borrower table
 {
     public class BorrowerController : Controller
     {

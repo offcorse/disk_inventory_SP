@@ -26,7 +26,7 @@ namespace DiskInventory
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<disk_inventory_spContext>(options =>
+            services.AddDbContext<disk_inventory_spContext>(options =>  //change to my database connection
                 options.UseSqlServer(
                     Configuration.GetConnectionString("disk_inventory_spContext")));
         }
