@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Disk Inventory";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Jenny's Disk Invetory</h1>
+    <p>Invetory management software for the music enthusiast</p>
+    <h1>Admin</h1>
+    <div class="list-group">
+        <a asp-controller="Artist" asp-action="List"
+           class="list-group">Manage Artists</a>
+    </div>
+    <a asp-controller="Borrower" asp-action="List"
+       class="list-group">Manage Borrower</a>
+    <a asp-controller="Disk" asp-action="List"
+       class="list-group">Manage Disk</a>
+</div>
+
