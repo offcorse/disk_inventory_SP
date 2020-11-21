@@ -69,3 +69,9 @@ C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInvent
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Artist\List.cshtml.g.cs
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Borrower\List.cshtml.g.cs
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Disk\List.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Artist\Delete.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Artist\Edit.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Borrower\Edit.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Borrower\Delete.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Disk\Edit.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Disk\Delete.cshtml.g.cs

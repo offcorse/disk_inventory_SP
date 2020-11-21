@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiskInventory.Models
 {
@@ -12,6 +13,7 @@ namespace DiskInventory.Models
         }
 
         public int DiskId { get; set; }
+        [Required]
         public string DiskName { get; set; }
         public DateTime ReleaseDate { get; set; }
         public int GenreId { get; set; }

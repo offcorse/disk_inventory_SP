@@ -19,6 +19,64 @@ namespace DiskInventory.Controllers //controller for Disk table
             List<Disk> disk = context.Disk.OrderBy(a => a.DiskName).ToList();
             return View(disk);
         }
-
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewBag.Action = "Add";
+            ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskTypeId).ToList(); //viewbags for Disktype,genre, and status
+            ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
+            ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
+            return View("Edit", new Disk());
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Action = "Edit";
+            ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskDescription).ToList();  //viewbags for Disktype,genre, and status
+            ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
+            ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
+            var disk = context.Disk.Find(id);
+            return View(disk);
+        }
+        [HttpPost]
+        public IActionResult Edit(Disk disk)
+        {
+            if (ModelState.IsValid)
+            {
+                if (disk.DiskId == 0)
+                { 
+                    //disk.GenreId = 1;
+                    //disk.StatusId = 1;
+                    context.Disk.Add(disk);
+                }
+                else
+                { 
+                    //disk.GenreId = 1;
+                    //disk.StatusId = 1;
+                    context.Disk.Update(disk);
+                }
+                context.SaveChanges();
+                return RedirectToAction("List", "Disk");
+            }
+            else
+            {
+                ViewBag.Action = (disk.DiskId == 0) ? "Add" : "Edit";
+                ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskDescription).ToList();
+                return View(disk);
+            }
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var disk = context.Disk.Find(id);
+            return View(disk);
+        }
+        [HttpPost]
+        public IActionResult Delete(Disk disk)
+        {
+            context.Disk.Remove(disk);
+            context.SaveChanges();
+            return RedirectToAction("List", "Disk");
+        }
     }
 }
