@@ -26,7 +26,7 @@ namespace DiskInventory.Controllers //controller for Disk table
             ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskTypeId).ToList(); //viewbags for Disktype,genre, and status
             ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
             ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
-            return View("Edit", new Disk());
+            return View("Edit", new Disk());//return the Edit view with an empty Disk object for the Add process.
         }
         [HttpGet]
         public IActionResult Edit(int id)
@@ -36,7 +36,7 @@ namespace DiskInventory.Controllers //controller for Disk table
             ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
             ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
             var disk = context.Disk.Find(id);
-            return View(disk);
+            return View(disk); //return the disk object to the view
         }
         [HttpPost]
         public IActionResult Edit(Disk disk)
@@ -56,13 +56,15 @@ namespace DiskInventory.Controllers //controller for Disk table
                     context.Disk.Update(disk);
                 }
                 context.SaveChanges();
-                return RedirectToAction("List", "Disk");
+                return RedirectToAction("List", "Disk"); //redirect back to disk list
             }
             else
             {
                 ViewBag.Action = (disk.DiskId == 0) ? "Add" : "Edit";
-                ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskDescription).ToList();
-                return View(disk);
+                ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskDescription).ToList();  //viewbags for Disktype,genre, and status
+                ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
+                ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
+                return View(disk);  //return the disk object to the view
             }
         }
         [HttpGet]

@@ -16,30 +16,30 @@ namespace DiskInventory.Controllers  //controller for Artist table
         }
         public IActionResult List()
         {
-            List<Artist> artists = context.Artist.OrderBy(a => a.ArtistLastName).ThenBy(a => a.ArtistFirstName).ToList();
+            List<Artist> artists = context.Artist.OrderBy(a => a.ArtistLastName).ThenBy(a => a.ArtistFirstName).ToList(); //list out the artists into an artists object and return to the view
             return View(artists);
         }
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();
-            return View("Edit", new Artist());
+            ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList(); //use the viewbag to store artist types
+            return View("Edit", new Artist()); //use the Edit view with an empty new Artist for the Add function (artistID == 0)
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();
+            ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();//use the viewbag to store artist types
             var artist = context.Artist.Find(id);
-            return View(artist);
+            return View(artist);//return the artist object to the view
         }
         [HttpPost]
         public IActionResult Edit(Artist artist)
         {
             if (ModelState.IsValid)
             {
-                if (artist.ArtistId == 0)
+                if (artist.ArtistId == 0)//then it's an Add
                     context.Artist.Add(artist);
                 else
                     context.Artist.Update(artist);
@@ -49,7 +49,7 @@ namespace DiskInventory.Controllers  //controller for Artist table
             else
             {
                 ViewBag.Action = (artist.ArtistId == 0) ? "Add":"Edit";
-                ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();
+                ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList(); //use the viewbag to store artist types
                 return View(artist);
             }
         }

@@ -16,7 +16,7 @@ namespace DiskInventory.Controllers     //controller for Borrower table
         }
         public IActionResult List()
         {
-            List<Borrower> borrower = context.Borrower.OrderBy(a => a.LastName).ToList();
+            List<Borrower> borrower = context.Borrower.OrderBy(a => a.LastName).ToList();//return a list of borrowers
             return View(borrower);
         }
 
@@ -25,7 +25,7 @@ namespace DiskInventory.Controllers     //controller for Borrower table
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            return View("Edit", new Borrower());
+            return View("Edit", new Borrower());//new borrower object means 'Add' in the Edit View
         }
         [HttpGet]
 
@@ -40,7 +40,7 @@ namespace DiskInventory.Controllers     //controller for Borrower table
         {
             if (ModelState.IsValid)
             {
-                if (borrower.BorrowerId == 0)
+                if (borrower.BorrowerId == 0)//id==0 means 'add'
                     context.Borrower.Add(borrower);
                 else
                     context.Borrower.Update(borrower);

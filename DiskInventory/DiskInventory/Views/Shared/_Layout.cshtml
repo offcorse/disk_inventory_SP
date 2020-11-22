@@ -11,18 +11,20 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand"asp-controller="Home" asp-action="Index">DiskInventory</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img class="img-responsive2" src="~/img/artwork-cds-og.jpg" />DiskInventory
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            @*<a class="nav-link text-dark" asp-controller="Artist" asp-action="List">Artists</a>
-                            <a class="nav-link text-dark" asp-controller="Borrower" asp-action="List">Borrowers</a>
-                            <a class="nav-link text-dark" asp-controller="Disk" asp-action="List">Disks</a>*@
+                    <ul class="navbar-nav list-inline">
+                        <li class="nav-item ">
+                            <a class="nav-link text-dark list-inline-item" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark list-inline-item" asp-controller="Artist" asp-action="List">Artists</a>
+                            <a class="nav-link text-dark list-inline-item" asp-controller="Borrower" asp-action="List">Borrowers</a>
+                            <a class="nav-link text-dark list-inline-item" asp-controller="Disk" asp-action="List">Disks</a>
                         </li>
                     </ul>
                 </div>
