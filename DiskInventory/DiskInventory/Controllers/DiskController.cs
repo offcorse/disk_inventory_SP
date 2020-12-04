@@ -17,6 +17,9 @@ namespace DiskInventory.Controllers //controller for Disk table
         public IActionResult List()
         {
             List<Disk> disk = context.Disk.OrderBy(a => a.DiskName).ToList();
+            ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskTypeId).ToList(); //viewbags for Disktype,genre, and status
+            ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
+            ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
             return View(disk);
         }
         [HttpGet]

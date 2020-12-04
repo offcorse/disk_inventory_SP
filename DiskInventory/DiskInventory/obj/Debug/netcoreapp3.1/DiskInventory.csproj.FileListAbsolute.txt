@@ -75,3 +75,5 @@ C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInvent
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Borrower\Delete.cshtml.g.cs
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Disk\Edit.cshtml.g.cs
 C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\Disk\Delete.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\DiskHasBorrower\List.cshtml.g.cs
+C:\Users\SPinkerton\Documents\swdv220\disk_inventory_SP\DiskInventory\DiskInventory\obj\Debug\netcoreapp3.1\Razor\Views\DiskHasBorrower\Edit.cshtml.g.cs

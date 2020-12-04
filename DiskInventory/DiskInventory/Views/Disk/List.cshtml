@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Disk Manager";
 }
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
 <h1>@ViewBag.Title</h1>
 <h2>List of Disks</h2>
 
@@ -27,10 +30,32 @@
         <tr>
             <td>@disk.DiskId</td>
             <td>@disk.DiskName</td>
-            <td>@disk.ReleaseDate</td>
-            <td>@disk.GenreId</td>
-            <td>@disk.StatusId</td>
-            <td>@disk.DiskTypeId</td>
+            <td>@disk.ReleaseDate.ToString("MM/dd/yyyy")</td>
+            @{
+                foreach (Genre g in ViewBag.Genres)
+                {
+                    if (g.GenreId == disk.GenreId)
+                    {
+                        <td>@g.GenreDescription</td>
+                    }
+                }
+                foreach (Status s in ViewBag.Status)
+                {
+                    if (s.StatusId == disk.StatusId)
+                    {
+                        <td>@s.StatusDescription</td>
+                    }
+                }
+                foreach (DiskType d in ViewBag.DiskTypes)
+                {
+                    if (d.DiskTypeId == disk.DiskTypeId)
+                    {
+                        <td>@d.DiskDescription</td>
+                    }
+                }
+            }
+
+
             <td>
                 <a asp-controller="Disk" asp-action="Edit" asp-route-id="@disk.DiskId">Edit</a>
                 <a asp-controller="Disk" asp-action="Delete" asp-route-id="@disk.DiskId">Delete</a>
@@ -38,7 +63,7 @@
         </tr>
         }
     </tbody>
-
+ 
 </table>
 }
 else 

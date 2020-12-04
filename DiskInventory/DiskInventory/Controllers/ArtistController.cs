@@ -16,6 +16,7 @@ namespace DiskInventory.Controllers  //controller for Artist table
         }
         public IActionResult List()
         {
+            ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();
             List<Artist> artists = context.Artist.OrderBy(a => a.ArtistLastName).ThenBy(a => a.ArtistFirstName).ToList(); //list out the artists into an artists object and return to the view
             return View(artists);
         }

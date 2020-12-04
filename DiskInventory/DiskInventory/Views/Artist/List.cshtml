@@ -21,16 +21,23 @@
     <tbody>
         @foreach (var artist in Model)
         {
-            <tr>
-                <td>@artist.ArtistId</td>
-                <td>@artist.ArtistFirstName</td>
-                <td>@artist.ArtistLastName</td>
-                <td>@artist.ArtistTypeId</td>
-                <td>
-                    <a asp-controller="Artist" asp-action="Edit" asp-route-id="@artist.ArtistId">Edit</a>
-                    <a asp-controller="Artist" asp-action="Delete" asp-route-id="@artist.ArtistId">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>@artist.ArtistId</td>
+            <td>@artist.ArtistFirstName</td>
+            <td>@artist.ArtistLastName</td>
+            @foreach (ArtistType a in ViewBag.ArtistTypes)//get solo or group 
+            {
+                if (a.ArtistTypeId == artist.ArtistTypeId)
+                {
+                    <td>@a.ArtistDescription</td>
+                }
+            }
+
+            <td>
+                <a asp-controller="Artist" asp-action="Edit" asp-route-id="@artist.ArtistId">Edit</a>
+                <a asp-controller="Artist" asp-action="Delete" asp-route-id="@artist.ArtistId">Delete</a>
+            </td>
+        </tr>
 
 
         }
