@@ -22,7 +22,7 @@ namespace DiskInventory.Controllers
             //List<DiskHasBorrower> diskhasborrower = context.DiskHasBorrower.OrderBy(d => d.DiskId).ThenBy(d => d.DiskHasBorrowerId).ToList();
             var diskhasborrower = context.DiskHasBorrower.OrderBy(db => db.BorrowedDate).
                 Include(d => d.Disk).OrderBy(d => d.Id).
-                Include(b => b.Borrower).OrderBy(b => b.BorrowerId).ToList();
+                Include(b => b.Borrower).OrderBy(b => b.BorrowedDate).ToList();
 
             return View(diskhasborrower);
         }

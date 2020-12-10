@@ -13,9 +13,12 @@ namespace DiskInventory.Models
         }
 
         public int DiskId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter a disk name.")]
         public string DiskName { get; set; }
+        
+        [Required]
         public DateTime ReleaseDate { get; set; }
+        [Required]
         public int GenreId { get; set; }
         public int StatusId { get; set; }
         public int DiskTypeId { get; set; }

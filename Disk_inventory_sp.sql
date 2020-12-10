@@ -5,6 +5,7 @@ Date		programmer			description
 10/16/2020	Scott Pinkerton		Add insert statements for all tables
 10/23/2020	Scott Pinkerton		Added queries for customer. 
 10/28/2020	Scott Pinkerton		Add ins, upd, del proc for artist, disk, borrorower
+12/3/2020   Scott Pinkerton		Added new PK to disk_has_borrower
 */
 
 --create database
@@ -74,11 +75,12 @@ CREATE TABLE disk (
 );
 
 CREATE TABLE disk_has_borrower (
+	Id INT NOT NULL PRIMARY KEY IDENTITY,
 	borrower_id			INT NOT NULL REFERENCES borrower(borrower_id),
 	disk_id				INT NOT NULL REFERENCES disk(disk_id),
 	borrowed_date		DATETIME2 NOT NULL,
 	returned_date		DATETIME2 NULL
-	PRIMARY KEY (borrower_id,disk_id)
+	
 );
 
 CREATE TABLE disk_has_artist (

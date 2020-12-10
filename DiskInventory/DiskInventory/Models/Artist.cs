@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiskInventory.Models
 {
@@ -11,6 +12,8 @@ namespace DiskInventory.Models
         }
 
         public int ArtistId { get; set; }
+        
+        [Required(ErrorMessage = "Enter an Artist First Name/Group Name.")]
         public string ArtistFirstName { get; set; }
         public string ArtistLastName { get; set; }
         public int ArtistTypeId { get; set; }

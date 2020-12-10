@@ -20,6 +20,7 @@ namespace DiskInventory.Controllers //controller for Disk table
             ViewBag.DiskTypes = context.DiskType.OrderBy(t => t.DiskTypeId).ToList(); //viewbags for Disktype,genre, and status
             ViewBag.Genres = context.Genre.OrderBy(g => g.GenreDescription).ToList();
             ViewBag.Status = context.Status.OrderBy(s => s.StatusDescription).ToList();
+            ViewBag.Artists = context.Artist.OrderBy(a => a.ArtistLastName).ToList();
             return View(disk);
         }
         [HttpGet]

@@ -17,7 +17,8 @@ namespace DiskInventory.Controllers  //controller for Artist table
         public IActionResult List()
         {
             ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();
-            List<Artist> artists = context.Artist.OrderBy(a => a.ArtistLastName).ThenBy(a => a.ArtistFirstName).ToList(); //list out the artists into an artists object and return to the view
+            ViewBag.Artists = context.Artist.OrderBy(a => a.ArtistLastName).ToList();
+            List<Artist> artists = context.Artist.OrderBy(a => a.ArtistFirstName).ThenBy(a => a.ArtistLastName).ToList(); //list out the artists into an artists object and return to the view
             return View(artists);
         }
         [HttpGet]
@@ -32,6 +33,7 @@ namespace DiskInventory.Controllers  //controller for Artist table
         {
             ViewBag.Action = "Edit";
             ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList();//use the viewbag to store artist types
+            ViewBag.Artists = context.Artist.OrderBy(a => a.ArtistLastName).ToList();
             var artist = context.Artist.Find(id);
             return View(artist);//return the artist object to the view
         }
@@ -51,6 +53,7 @@ namespace DiskInventory.Controllers  //controller for Artist table
             {
                 ViewBag.Action = (artist.ArtistId == 0) ? "Add":"Edit";
                 ViewBag.ArtistTypes = context.ArtistType.OrderBy(t => t.ArtistDescription).ToList(); //use the viewbag to store artist types
+                ViewBag.Artists = context.Artist.OrderBy(a => a.ArtistLastName).ToList();
                 return View(artist);
             }
         }

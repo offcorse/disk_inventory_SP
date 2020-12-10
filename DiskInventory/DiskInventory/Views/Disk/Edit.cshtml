@@ -13,13 +13,13 @@
     </div>
     <div class="form-group">
         <label asp-for="ReleaseDate">Release Date</label>
-        <input asp-for="ReleaseDate" class="form-control" />
+        <input type="date" asp-for="ReleaseDate" class="form-control" />
     </div>
 
     <div>
         <label asp-for="DiskTypeId">Disk Type</label>
         <select asp-for="DiskTypeId" class="form-control">
-            <option value="">Select a disk type</option>
+            <option value="select a disk type">Select a disk type</option>
             @foreach (DiskType t in ViewBag.DiskTypes)
             {
                 <option value="@t.DiskTypeId">@t.DiskDescription</option>
@@ -29,7 +29,7 @@
     <div>
         <label asp-for="GenreId">Genre</label>
         <select asp-for="GenreId" class="form-control">
-            <option value="">Select a genre</option>
+            <option value="select a genre">Select a genre</option>
             @foreach (Genre g in ViewBag.Genres)
             {
                 <option value="@g.GenreId">@g.GenreDescription</option>
@@ -39,7 +39,7 @@
     <div>
         <label asp-for="StatusId">Status</label>
         <select asp-for="StatusId" class="form-control">
-            <option value="">Select a status</option>
+            <option value="select a status">Select a status</option>
             @foreach (Status s in ViewBag.Status)
             {
                 <option value="@s.StatusId">@s.StatusDescription</option>
